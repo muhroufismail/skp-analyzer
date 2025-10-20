@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKP Analyzer - Rekomendasi AI Coach</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* Variabel Warna (Pastikan sama dengan style.css Anda) */
+        :root {
+            --navy-blue: #001f3f;
+            --cyan-accent: #00bcd4;
+            --light-gray: #f4f4f4;
+            --card-background: #ffffff;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- Coach Page Styling --- */
+        .coach-card {
+            width: 100%;
+            flex: 1;
+            box-shadow: 0 10px 30px var(--shadow-color);
+            border-radius: 12px;
+            margin-bottom: 50px; /* Tambahkan sedikit ruang di bawah */
+        }
+
+        .coach-card .card-title {
+            margin-bottom: 30px;
+        }
+
+        .coach-grid {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .visual-box, .report-box {
+            flex: 1;
+            border: 1px solid #eee;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: var(--light-gray);
+        }
+
+        .sub-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--navy-blue);
+            margin-bottom: 15px;
+        }
+
+        .chart-placeholder {
+            height: 200px;
+            background-color: #e0e0e0; /* Warna abu-abu dummy */
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 20px;
+            /* Placeholder untuk Grafik Radar/Pie Chart */
+        }
+
+        /* Report Box */
+        .pdf-preview {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px dashed #ccc;
+            border-radius: 8px;
+            background-color: white;
+        }
+
+        .pdf-icon {
+            font-size: 50px;
+            color: #cc0000;
+            margin-bottom: 10px;
+        }
+
+        /* Recommendation List */
+        .sub-title-list {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--navy-blue);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--cyan-accent);
+            padding-bottom: 5px;
+        }
+
+        .recommendation-list {
+            list-style: none;
+        }
+
+        .recommendation-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            background-color: var(--card-background);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .item-number {
+            font-weight: 700;
+            color: var(--cyan-accent);
+            margin-right: 10px;
+        }
+
+        .item-text {
+            flex-grow: 1;
+            color: #333;
+        }
+
+        .arrow-icon {
+            color: var(--navy-blue);
+        }
+        
+        .action-button {
+            /* Style tombol yang sama */
+            background: linear-gradient(90deg, #00b8d4, #00e0ff);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 20px;
+            display: block;
+            width: 100%;
+            text-align: center;
+            text-decoration: none; 
+        }
+
+        .secondary-action {
+            background: none;
+            color: var(--navy-blue);
+            border: 2px solid var(--navy-blue);
+            font-weight: 600;
+            margin-top: 30px;
+            text-decoration: none;
+            width: 50%; /* Membuat tombol kembali lebih kecil */
+            margin: 30px auto 0 auto;
+        }
+
+        .secondary-action:hover {
+            background-color: var(--navy-blue);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <header class="app-header">
+            <div class="header-content">
+                <div class="logo-area">
+                    <img src="bkn-logo.png" alt="BKN Logo" class="bkn-logo">
+                    <span class="app-title">SKP Analyzer</span>
+                </div>
+                <div class="ai-area">
+                    <span class="ai-text">AI SMART Evaluator Dashboard</span>
+                    <i class="fas fa-microchip ai-chip"></i>
+                </div>
+            </div>
+        </header>
+
+        <div class="content-wrapper">
+            <div class="card coach-card">
+                <h2 class="card-title">Rekomendasi AI Coach & Laporan Akhir</h2>
+
+                <div class="coach-grid">
+                    <div class="visual-box">
+                        <h3 class="sub-title">Visualisasi Tren Kelemahan Skill</h3>
+                        <div class="chart-placeholder">[Grafik Radar Dummy: Menunjukkan Skill Gap]</div>
+                    </div>
+
+                    <div class="report-box">
+                        <h3 class="sub-title">Laporan Analisis Final</h3>
+                        <div class="pdf-preview">
+                            <i class="fas fa-file-pdf pdf-icon"></i>
+                            <p>Preview Laporan SKP</p>
+                        </div>
+                        <button class="action-button primary-action">Ekspor Laporan (PDF)</button>
+                    </div>
+                </div>
+
+                <h3 class="sub-title-list">Rekomendasi Pelatihan AI Coach</h3>
+                <ul class="recommendation-list">
+                    <li class="recommendation-item">
+                        <span class="item-number">1.</span>
+                        <span class="item-text">Modul E-learning: Pengukuran Kinerja Kuantitatif</span>
+                        <i class="fas fa-arrow-right arrow-icon"></i>
+                    </li>
+                    <li class="recommendation-item">
+                        <span class="item-number">2.</span>
+                        <span class="item-text">Workshop: Penyusunan Indikator SMART</span>
+                        <i class="fas fa-arrow-right arrow-icon"></i>
+                    </li>
+                    <li class="recommendation-item">
+                        <span class="item-number">3.</span>
+                        <span class="item-text">Pelatihan: Agregasi Data & Pelaporan</span>
+                        <i class="fas fa-arrow-right arrow-icon"></i>
+                    </li>
+                </ul>
+
+                <button class="action-button secondary-action" onclick="goBackToAnalysis()">← KEMBALI KE DASHBOARD</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function goBackToAnalysis() {
+            // Mengarahkan browser kembali ke halaman index.html
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

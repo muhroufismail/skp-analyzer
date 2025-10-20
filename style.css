@@ -1,0 +1,544 @@
+/* Variabel Warna */
+:root {
+    --navy-blue: #001f3f;
+    --cyan-accent: #00bcd4; /* Warna biru muda terang untuk aksen */
+    --light-gray: #f4f4f4;
+    --card-background: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Ganti dengan font yang mirip */
+}
+
+body {
+    background-color: var(--light-gray);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Ubah ke flex-start agar tidak terlalu di tengah vertikal */
+    padding-top: 50px;
+    min-height: 100vh;
+}
+
+.main-container {
+    width: 90%;
+    max-width: 1100px;
+}
+
+/* --- Header Styling --- */
+.app-header {
+    background-color: var(--navy-blue);
+    color: white;
+    padding: 15px 30px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+}
+
+.bkn-logo {
+    height: 30px; /* Sesuaikan ukuran logo BKN */
+    margin-right: 10px;
+    /* Catatan: Untuk logo yang terpisah dari teks, gunakan background gambar atau tag img */
+}
+
+.app-title {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.ai-area {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: var(--cyan-accent);
+}
+
+.ai-chip {
+    margin-left: 8px;
+    font-size: 18px;
+}
+
+/* --- Wrapper Konten Utama --- */
+.content-wrapper {
+    display: flex;
+    background-color: white;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+}
+
+.card {
+    padding: 30px;
+}
+
+.input-card {
+    flex: 2;
+    border-right: 1px solid #eee;
+}
+
+.sidebar-card {
+    flex: 1;
+    background-color: #0d2b51; /* Warna biru tua sidebar */
+    color: white;
+    border-top: 1px solid #1a3a61;
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+/* --- Input Area Styling --- */
+.input-tabs {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.tab-button {
+    background: none;
+    border: none;
+    padding: 8px 15px;
+    font-weight: 500;
+    color: #666;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+}
+
+.tab-button.active {
+    color: var(--cyan-accent);
+    border-bottom: 2px solid var(--cyan-accent);
+}
+
+.skp-textarea {
+    width: 100%;
+    min-height: 250px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    resize: none;
+    font-size: 15px;
+}
+
+.file-upload-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.file-button {
+    background-color: var(--cyan-accent);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 15px;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.file-button:hover {
+    background-color: #00a0b8;
+}
+
+.file-status {
+    color: #999;
+    font-size: 14px;
+}
+
+.run-analysis-button {
+    width: 100%;
+    background: linear-gradient(90deg, #00b8d4, #00e0ff);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 184, 212, 0.4);
+    transition: transform 0.1s;
+}
+
+.run-analysis-button:active {
+    transform: translateY(1px);
+}
+
+/* --- Sidebar Styling --- */
+.sidebar-card .card-title {
+    color: var(--cyan-accent);
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-group input[type="text"],
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #1a3a61; /* Warna input di sidebar */
+    color: white;
+    border: 1px solid #4a6a92;
+    appearance: none; /* Hilangkan default styling untuk select */
+}
+
+/* Toggle Switch Styling */
+.toggle-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
+    font-weight: 500;
+}
+
+/* Styling Switch yang meniru style mockup */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 28px;
+    margin: 0 10px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--cyan-accent);
+}
+
+input:checked + .slider:before {
+    transform: translateX(22px);
+}
+/* --- Analysis Page Styling --- */
+
+.analysis-page {
+    /* Menghapus border-right pada input-card agar tampilannya penuh */
+    border-right: none; 
+}
+
+.result-card {
+    flex: 2.5; /* Proporsi lebih besar untuk hasil analisis */
+    border-right: none;
+}
+
+.relevancy-sidebar {
+    flex: 1; /* Proporsi lebih kecil untuk sidebar relevansi */
+    padding: 30px;
+}
+
+.relevancy-title {
+    color: white !important;
+    margin-bottom: 50px;
+}
+
+/* Score Box */
+.score-box {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--light-gray);
+    border-radius: 8px;
+    margin-bottom: 30px;
+    border: 1px solid #ddd;
+}
+
+.score-number {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--navy-blue);
+}
+
+.score-status {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.progress-bar-container {
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    height: 8px;
+    margin-bottom: 10px;
+    width: 80%;
+    margin: 0 auto 15px auto;
+}
+
+.progress-bar {
+    background-color: var(--cyan-accent);
+    height: 100%;
+    border-radius: 10px;
+}
+
+.summary-text {
+    font-size: 14px;
+    color: #333;
+    font-style: italic;
+}
+
+/* Indicator List */
+.indicator-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background-color: var(--card-background);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.indicator-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.indicator-title {
+    font-weight: 600;
+    color: var(--navy-blue);
+}
+
+.indicator-feedback {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.smart-icons {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.pass { color: green; margin-right: 5px; }
+.fail { color: red; margin-right: 5px; }
+.warn { color: orange; margin-right: 5px; }
+
+.edit-icon {
+    color: var(--cyan-accent);
+    cursor: pointer;
+}
+
+.action-button {
+    background: linear-gradient(90deg, #00b8d4, #00e0ff);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+/* Relevancy Sidebar Styling */
+.relevancy-sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+}
+
+.relevancy-status-box {
+    padding: 30px;
+    background-color: #1a3a61;
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.link-icon {
+    font-size: 30px;
+    color: var(--cyan-accent);
+    margin-bottom: 10px;
+}
+
+.relevancy-status {
+    font-size: 20px;
+    font-weight: 700;
+    color: #aaffaa; /* Warna hijau muda untuk status "Kuat" */
+    display: block;
+    margin-top: 10px;
+}
+/* --- Coach Page Styling --- */
+
+.coach-page .card-title {
+    margin-bottom: 30px;
+}
+
+.coach-card {
+    width: 100%;
+    flex: 1;
+}
+
+.coach-grid {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.visual-box, .report-box {
+    flex: 1;
+    border: 1px solid #eee;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: var(--light-gray);
+}
+
+.sub-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--navy-blue);
+    margin-bottom: 15px;
+}
+
+.chart-placeholder {
+    height: 200px;
+    background-color: #ddd;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #666;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+/* Report Box */
+.pdf-preview {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px dashed #ccc;
+    border-radius: 8px;
+    background-color: white;
+}
+
+.pdf-icon {
+    font-size: 50px;
+    color: #cc0000;
+    margin-bottom: 10px;
+}
+
+.report-box .action-button {
+    width: 100%;
+}
+
+/* Recommendation List */
+.sub-title-list {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--navy-blue);
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--cyan-accent);
+    padding-bottom: 5px;
+}
+
+.recommendation-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    background-color: var(--card-background);
+    transition: background-color 0.2s;
+}
+
+.recommendation-item:hover {
+    background-color: #f0f8ff;
+}
+
+.item-number {
+    font-weight: 700;
+    color: var(--cyan-accent);
+    margin-right: 10px;
+}
+
+.item-text {
+    flex-grow: 1;
+    color: #333;
+}
+
+.arrow-icon {
+    color: var(--navy-blue);
+}
+
+.secondary-action {
+    background: none;
+    color: var(--navy-blue);
+    border: 2px solid var(--navy-blue);
+    font-weight: 600;
+    margin-top: 30px;
+    text-decoration: none;
+}
+
+.secondary-action:hover {
+    background-color: var(--navy-blue);
+    color: white;
+}
+
+/* Penyesuaian agar tombol secondary terlihat seperti anchor link */
+a.action-button {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

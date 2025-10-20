@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKP Analyzer - ASN Digital AI Hackathon 2025</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* Variabel Warna */
+        :root {
+            --navy-blue: #001f3f;
+            --cyan-accent: #00bcd4;
+            --light-gray: #f4f4f4;
+            --card-background: #ffffff;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-gray);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 50px;
+            min-height: 100vh;
+        }
+
+        .main-container {
+            width: 90%;
+            max-width: 1100px;
+        }
+
+        /* Header Styling */
+        .app-header {
+            background-color: var(--navy-blue);
+            color: white;
+            padding: 15px 30px;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+        }
+
+        .bkn-logo {
+            height: 30px; 
+            margin-right: 10px;
+        }
+
+        .app-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .ai-area {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: var(--cyan-accent);
+        }
+
+        .ai-chip {
+            margin-left: 8px;
+            font-size: 18px;
+        }
+
+        /* Wrapper Konten Utama */
+        .content-wrapper {
+            display: flex;
+            background-color: white;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            box-shadow: 0 10px 30px var(--shadow-color);
+        }
+
+        .card {
+            padding: 30px;
+        }
+
+        .input-card {
+            flex: 2;
+            border-right: 1px solid #eee;
+        }
+
+        .sidebar-card {
+            flex: 1;
+            background-color: #0d2b51; 
+            color: white;
+            border-top: 1px solid #1a3a61;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        /* Input Area Styling */
+        .input-tabs {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .tab-button {
+            background: none;
+            border: none;
+            padding: 8px 15px;
+            font-weight: 500;
+            color: #666;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .tab-button.active {
+            color: var(--cyan-accent);
+            border-bottom: 2px solid var(--cyan-accent);
+        }
+
+        .skp-textarea {
+            width: 100%;
+            min-height: 250px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            resize: none;
+            font-size: 15px;
+        }
+
+        .file-upload-section {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .file-button {
+            background-color: var(--cyan-accent);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-right: 15px;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+
+        .file-button:hover {
+            background-color: #00a0b8;
+        }
+
+        .file-status {
+            color: #999;
+            font-size: 14px;
+        }
+        
+        /* Tombol RUN ANALISIS AI */
+        .run-analysis-button {
+            width: 100%;
+            background: linear-gradient(90deg, #00b8d4, #00e0ff);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 184, 212, 0.4);
+            transition: transform 0.1s;
+        }
+
+        .run-analysis-button:active {
+            transform: translateY(1px);
+        }
+
+        /* Sidebar Styling */
+        .sidebar-card .card-title {
+            color: var(--cyan-accent);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input[type="text"],
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            background-color: #1a3a61; 
+            color: white;
+            border: 1px solid #4a6a92;
+            appearance: none; 
+        }
+
+        /* Toggle Switch Styling */
+        .toggle-group {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 30px;
+            font-weight: 500;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 28px;
+            margin: 0 10px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--cyan-accent);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(22px);
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <header class="app-header">
+            <div class="header-content">
+                <div class="logo-area">
+                    <img src="bkn-logo.png" alt="BKN Logo" class="bkn-logo"> 
+                    <span class="app-title">SKP Analyzer</span>
+                </div>
+                <div class="ai-area">
+                    <span class="ai-text">AI SMART Evaluator Dashboard</span>
+                    <i class="fas fa-microchip ai-chip"></i>
+                </div>
+            </div>
+        </header>
+
+        <div class="content-wrapper">
+            <div class="card input-card">
+                <h2 class="card-title">Input SKP</h2>
+                <div class="input-tabs">
+                    <button class="tab-button active">Input Teks</button>
+                    <button class="tab-button">Upload Dokumen</button>
+                </div>
+
+                <div class="input-area">
+                    <textarea class="skp-textarea" placeholder="Ketik rincian Sasaran Kinerja Pegawai di sini..."></textarea>
+
+                    <div class="file-upload-section">
+                        <button class="file-button">Pilih File PDF/DOCX</button>
+                        <span class="file-status">Belum ada file yang dipilih.</span>
+                    </div>
+                </div>
+
+                <button class="run-analysis-button" onclick="runAnalysis()">RUN ANALISIS AI</button>
+            </div>
+
+            <div class="card sidebar-card">
+                <h2 class="card-title">ASN Digital AI Hackathon 2025</h2>
+                <div class="form-group">
+                    <label>Nama Pegawai</label>
+                    <input type="text" placeholder="Nama Pegawai">
+                </div>
+                <div class="form-group">
+                    <label>Unit Kerja</label>
+                    <select>
+                        <option>Unit Kerja</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Pilih Atasan Penilai</label>
+                    <select>
+                        <option>Pilih Atasan Penilai</option>
+                    </select>
+                </div>
+                <div class="toggle-group">
+                    <label>Mode Fungsional</label>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round"></span>
+                    </label>
+                    <label>Mode JPT</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function runAnalysis() {
+            // Dalam prototipe nyata, fungsi di sini akan:
+            // 1. Mengambil data dari textarea/input file.
+            // 2. Mengirim data tersebut ke server (backend Python/AI).
+            // 3. Menerima hasil analisis.
+            
+            // UNTUK KEPENTINGAN PROTOTIPE VISUAL DAN HACKATHON:
+            // Kita hanya melakukan navigasi statis ke halaman analisis.
+            window.location.href = 'analysis.html';
+        }
+
+        // Tambahkan fungsionalitas untuk tab (opsional)
+        document.querySelector('.tab-button.active').addEventListener('click', function() {
+            // Logika untuk menampilkan/menyembunyikan area input teks vs upload
+            console.log('Tab Input Teks diklik');
+        });
+    </script>
+</body>
+</html>

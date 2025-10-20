@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKP Analyzer - Hasil Analisis</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* Variabel Warna (Pastikan sama dengan style.css Anda) */
+        :root {
+            --navy-blue: #001f3f;
+            --cyan-accent: #00bcd4;
+            --light-gray: #f4f4f4;
+            --card-background: #ffffff;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- Styling Analysis Page (Tambahan CSS untuk tampilan) --- */
+        
+        .analysis-page {
+            display: flex;
+            box-shadow: 0 10px 30px var(--shadow-color);
+        }
+
+        .result-card {
+            flex: 2.5; /* Proporsi lebih besar untuk hasil analisis */
+        }
+
+        .relevancy-sidebar {
+            flex: 1; /* Proporsi lebih kecil untuk sidebar relevansi */
+            padding: 30px;
+            background-color: #0d2b51; 
+            color: white;
+            border-top-right-radius: 12px;
+            border-bottom-right-radius: 12px;
+        }
+
+        /* Score Box */
+        .score-box {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border: 1px solid #ddd;
+        }
+
+        .score-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--navy-blue);
+        }
+
+        .score-status {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .progress-bar-container {
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            height: 8px;
+            margin-bottom: 10px;
+            width: 80%;
+            margin: 0 auto 15px auto;
+        }
+
+        .progress-bar {
+            background-color: var(--cyan-accent);
+            height: 100%;
+            border-radius: 10px;
+        }
+
+        .summary-text {
+            font-size: 14px;
+            color: #333;
+            font-style: italic;
+        }
+
+        /* Indicator List */
+        .indicator-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            background-color: var(--card-background);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .indicator-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .indicator-title {
+            font-weight: 600;
+            color: var(--navy-blue);
+        }
+
+        .indicator-feedback {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .smart-icons {
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .pass { color: green; margin-right: 5px; }
+        .fail { color: red; margin-right: 5px; }
+        .warn { color: orange; margin-right: 5px; }
+        
+        .action-button {
+            background: linear-gradient(90deg, #00b8d4, #00e0ff);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 20px;
+            display: block;
+            width: 100%;
+            text-align: center;
+            text-decoration: none; /* Untuk link */
+        }
+        
+        /* Relevancy Sidebar Styling */
+        .relevancy-sidebar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: center;
+        }
+        
+        .relevancy-title {
+            color: var(--cyan-accent) !important;
+            margin-bottom: 50px;
+        }
+
+        .relevancy-status-box {
+            padding: 30px;
+            background-color: #1a3a61;
+            border-radius: 10px;
+            width: 100%;
+            margin-top: 50px;
+        }
+
+        .link-icon {
+            font-size: 30px;
+            color: var(--cyan-accent);
+            margin-bottom: 10px;
+        }
+
+        .relevancy-status {
+            font-size: 20px;
+            font-weight: 700;
+            color: #aaffaa; 
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <header class="app-header">
+            <div class="header-content">
+                <div class="logo-area">
+                    <img src="bkn-logo.png" alt="BKN Logo" class="bkn-logo">
+                    <span class="app-title">SKP Analyzer</span>
+                </div>
+                <div class="ai-area">
+                    <span class="ai-text">AI SMART Evaluator Dashboard</span>
+                    <i class="fas fa-microchip ai-chip"></i>
+                </div>
+            </div>
+        </header>
+
+        <div class="content-wrapper analysis-page">
+            <div class="card result-card">
+                <h2 class="card-title">Hasil Analisis AI</h2>
+
+                <div class="score-box">
+                    <div class="score-number">78%</div>
+                    <div class="score-status">Membutuhkan Perbaikan</div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="width: 78%;"></div>
+                    </div>
+                    <p class="summary-text">Analisis menemukan 4 dari 8 Indikator lemah pada aspek Measurable (M).</p>
+                </div>
+
+                <div class="indicator-list">
+                    
+                    <div class="indicator-card">
+                        <div class="indicator-header">
+                            <span class="indicator-title">Indikator 1: Peningkatan Kualitas Layanan Publik</span>
+                        </div>
+                        <p class="indicator-feedback">Kata kerja kurang spesifik. Target kuantitatif tidak terdefinisi jelas.</p>
+                        <div class="smart-icons">
+                            SMART: S <span class="pass">✅</span> M <span class="fail">❌</span> A <span class="pass">✅</span> R <span class="warn">⚠️</span> T <span class="fail">❌</span>
+                        </div>
+                    </div>
+                    
+                    <div class="indicator-card">
+                        <div class="indicator-header">
+                            <span class="indicator-title">Indikator 2: Penyelehan Target Kinerja</span>
+                        </div>
+                        <p class="indicator-feedback">Target tidak realistis dan belum relevan dengan RHK atasan.</p>
+                        <div class="smart-icons">
+                            SMART: S <span class="pass">✅</span> M <span class="fail">❌</span> A <span class="fail">❌</span> R <span class="pass">✅</span> T <span class="fail">❌</span>
+                        </div>
+                    </div>
+
+                    <div class="indicator-card">
+                        <div class="indicator-header">
+                            <span class="indicator-title">Indikator 3: Efisiensi Anggaran Operasional</span>
+                        </div>
+                        <p class="indicator-feedback">Indikator sudah baik, tetapi kurang *evidence* hasil kuantitatif.</p>
+                        <div class="smart-icons">
+                            SMART: S <span class="pass">✅</span> M <span class="warn">⚠️</span> A <span class="pass">✅</span> R <span class="pass">✅</span> T <span class="pass">✅</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="action-button primary-action" onclick="goToRecommendation()">LIHAT REKOMENDASI AI COACH →</button>
+            </div>
+
+            <div class="sidebar-card relevancy-sidebar">
+                <h2 class="card-title relevancy-title">Relevansi Mapping</h2>
+                <div class="relevancy-status-box">
+                    <i class="fas fa-link link-icon"></i>
+                    <p>Kesesuaian dengan RHK Atasan:</p>
+                    <span class="relevancy-status">Kuat</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function goToRecommendation() {
+            // Fungsi ini akan mengarahkan browser ke halaman rekomendasi
+            window.location.href = 'recommendation.html';
+        }
+    </script>
+</body>
+</html>
